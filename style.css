@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Open+Sans&display=swap');
+
+/* font-family: 'Abril Fatface', cursive;
+font-family: 'Open Sans', sans-serif; */
+
+/* DEFAULT */
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Open Sans', sans-serif, Arial;
+}
+
+body {
+   height: 100vh;
+   background: #43849D;
+   background: -webkit-linear-gradient(top left, #43849D, #AFCCC5);
+   background: -moz-linear-gradient(top left, #43849D, #AFCCC5);
+   background: linear-gradient(to bottom right, #43849D, #AFCCC5);
+}
+
+/* HEADER */
+header {
+   height: 5rem;
+   display: flex;
+   
+   width: 100%;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   background: #e0fbfc;
+}
+
+header h1 {
+   font-family: 'Abril Fatface', cursive;
+   color: #98c1d9;
+}
+
+header span {
+   font-family: 'Abril Fatface', cursive;
+   color: #3d5a80;
+}
+
+
+/* TABLE */
+table {
+   border-collapse: collapse;
+   /* check below */
+   border-spacing: 0; 
+   width: 80%;
+   margin: 0 auto;
+   margin-top: 2rem;
+   text-align: center;
+}
+
+td, th {
+   border: 1px solid #000;
+   padding: 1rem 0;
+}
+
+th {
+   text-transform: uppercase;
+   font-weight: bold;
+}
+
+tr:nth-child(even) {
+   background: #AFCCC5;
+}
+
+/* ADD BOOK */
+
+/* .add-book {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   background: white;
+   padding: 1rem 2rem;
+   border-radius: 20px;
+   z-index: 10;
+   display: flex;
+   flex-direction: column;
+   text-align: center;
+} */
+
+
+/* CSS ADD/REMOVE */
+/* .blur {
+   z-index: 0;
+} */
