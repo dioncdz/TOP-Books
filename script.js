@@ -1,3 +1,9 @@
+// TODO: UPDATE UI
+// TODO: MAKE READ STATUS A CHECKBOX
+// TODO: APPLY LOCAL STORAGE
+// TODO: DELETE ALL FORM VALUES ---addBookToLibrary()
+// TODO: CANCEL / DELETE INPUT VALUES  ---addBookToLibrary()
+
 /**************************************
  * // ELEMENTS
  **************************************/
@@ -7,8 +13,7 @@ const addBookButtons = document.querySelectorAll('.add-book-btn');
 let myLibrary = [];
 let sortDirection = false;
 
-
-// CONSTRUCTOR
+// BOOK CONSTRUCTOR
 function Book(title, author, numPages, isRead) {
    this.title = title,
    this.author = author,
@@ -24,22 +29,73 @@ Book.prototype.info = function () {
  * // FUNCTIONS
  **************************************/
 function addBookToLibrary () {
-   // TODO: GET BOOK INFO FROM USER
-   let title = document.querySelector('#title').value;
-   let author = document.querySelector('#author').value;
-   let numPages = document.querySelector('#numPages').value;
-   let isRead = document.querySelector('#isRead').value;
+   if(this.id === 'submit') {
+      // GET BOOK INFO FROM USER
+      let title = document.querySelector('#title').value;
+      let author = document.querySelector('#author').value;
+      let numPages = document.querySelector('#numPages').value;
+      let isRead = document.querySelector('#isRead').checked;
+   
+      // STORE DETAILS IN NEW BOOK OBJECT
+      const newBook = new Book(title, author, numPages, isRead)
+   
+      // ADD THE LATEST BOOK IN LIBRARY 
+      myLibrary.push(newBook);
+   
+      // TODO: DELETE ALL FORM VALUES
+   
+      // TODO: UPDATE UI
+      // const libraryTable = document.querySelector('#library-data');
+      // const createRow = document.createElement('tr');
 
-   // TODO: GET CURRENT LIST OF BOOKS 
+      // const dataTitle = document.createElement('td');
+      // dataTitle.innerHTML = `${title}`;
 
-   // TODO: ADD THE LATEST BOOK IN LIBRARY 
+      // const dataAuthor = document.createElement('td');
+      // dataAuthor.innerHTML = `${author}`;
 
-   // TODO: RETURN UPDATED LIST OF BOOKS
-   console.log('Hello');
+      // const dataNumPages = document.createElement('td')
+      // dataNumPages.innerHTML = `${numPages}`;
+
+      // const dataIsRead = document.createElement('td')
+      // dataIsRead.innerHTML = `${isRead}`;
+
+      // const dataRemove = document.createElement('td')
+      // dataRemove.innerHTML = `<button class="delete-btn"><i class="far fa-trash-alt"></i></button>`;
+      
+      // libraryTable.appendChild(createRow);
+      // const tableRow = document.querySelector('#library-data tr:last-child')
+      // tableRow.appendChild(dataTitle)
+      // tableRow.appendChild(dataAuthor)
+      // tableRow.appendChild(dataNumPages)
+      // tableRow.appendChild(dataIsRead)
+      // tableRow.appendChild(dataRemove)
+
+      displayBooks(myLibrary)
+
+      const deleteButtons = document.querySelectorAll('.delete-btn')
+
+      deleteButtons.forEach(btn => {
+         btn.addEventListener('click', deleteBook);
+      })
+
+   } 
+   
+   else {
+      // TODO: CANCEL / DELETE INPUT VALUES
+      console.dir(this);
+   }
+
+}
+
+function deleteBook() {
+   let row = this.parentNode.parentNode;
+   row.parentNode.removeChild(row)
 }
 
 function displayBooks (books) {
    const libraryTable = document.querySelector('#library-data');
+
    let dataHTML = '';
 
    for(let book of books) {
@@ -52,6 +108,7 @@ function displayBooks (books) {
    }
 
    libraryTable.innerHTML = dataHTML;
+
 }
 
 function sortColumn(category) {
@@ -74,29 +131,15 @@ function sortNumberColumn(sort, columnName) {
    });
 }
 
-/**************************************
- * // BOOK LIST
- **************************************/
-// const book1 = new Book('Monk', 'Sharma', 3000, false);
-// const book2 = new Book('Apple', 'Sharma', 2700, false);
-// const book3 = new Book('Banana', 'Sharma', 2800, false);
-
-// myLibrary.push(book1)
-// myLibrary.push(book2)
-// myLibrary.push(book3)
+// sortColumn('numPages')
 
 /**************************************
- * // EXECUTE
- **************************************/
-
-//  displayBooks(myLibrary)
-//  sortColumn('numPages')
-
- /**************************************
  * // EVENT LISTENERS
  **************************************/
-
-
 addBookButtons.forEach(btn => {
    btn.addEventListener('click', addBookToLibrary);
 })
+
+
+
+
