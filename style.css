@@ -14,10 +14,8 @@ font-family: 'Open Sans', sans-serif; */
 
 body {
    height: 100vh;
-   background: #43849D;
-   background: -webkit-linear-gradient(top left, #43849D, #AFCCC5);
-   background: -moz-linear-gradient(top left, #43849D, #AFCCC5);
-   background: linear-gradient(to bottom right, #43849D, #AFCCC5);
+   background: rgb(255,255,255);
+   /* background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(51,51,51,1) 100%); */
 }
 
 /* HEADER */
@@ -29,17 +27,17 @@ header {
    justify-content: center;
    align-items: center;
    text-align: center;
-   background: #e0fbfc;
+   background: #fff;
 }
 
 header h1 {
    font-family: 'Abril Fatface', cursive;
-   color: #98c1d9;
+   color: darkgray;
 }
 
 header span {
    font-family: 'Abril Fatface', cursive;
-   color: #3d5a80;
+   color: #333;
 }
 
 
@@ -55,7 +53,8 @@ table {
 }
 
 td, th {
-   border: 1px solid #000;
+   border-top: 2px solid #000;
+   border-bottom: 2px solid #000;
    padding: 1rem 0;
 }
 
@@ -70,19 +69,37 @@ tr:nth-child(even) {
 
 /* ADD BOOK */
 
-/* .add-book {
-   position: absolute;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%);
-   background: white;
-   padding: 1rem 2rem;
-   border-radius: 20px;
-   z-index: 10;
+.add-book {
+width: 90%;
+margin: 0 auto;
+/* background: #fff; */
+text-align: center;
+}
+
+.add-book h3 {
+   margin: 5px;
+}
+.add-book div {
+   width: 100%;
    display: flex;
-   flex-direction: column;
-   text-align: center;
-} */
+   justify-content: center;
+   align-items: center;
+   flex-wrap: wrap;
+}
+
+.add-book div input {
+   border: none;
+   outline: none;
+   background: none;
+   font-size: 1rem;
+   border-radius: 10px;
+   box-shadow: inset 3px 3px 3px #f7f7f7, 
+   inset -3px -3px 3px #f7f7f7;
+   padding: 5px 10px;
+   margin: .5rem;
+}
+
+
 
 
 /* CSS ADD/REMOVE */
