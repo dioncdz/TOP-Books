@@ -30,12 +30,12 @@ header {
    background: #fff;
 }
 
-header h1 {
+header h1, h3 {
    font-family: 'Abril Fatface', cursive;
    color: darkgray;
 }
 
-header span {
+header span, .add-book h3 span {
    font-family: 'Abril Fatface', cursive;
    color: #333;
 }
@@ -46,7 +46,7 @@ table {
    border-collapse: collapse;
    /* check below */
    border-spacing: 0; 
-   width: 80%;
+   width: 90%;
    margin: 0 auto;
    margin-top: 2rem;
    text-align: center;
@@ -77,32 +77,27 @@ text-align: center;
 }
 
 .add-book h3 {
-   margin: 5px;
+   margin-right: 5px;
 }
+
 .add-book div {
    width: 100%;
    display: flex;
-   justify-content: center;
    align-items: center;
    flex-wrap: wrap;
 }
 
-.add-book div input {
+.add-book div input[type=text],
+.add-book div input[type=number] {
    border: none;
    outline: none;
-   background: none;
+   background: #f9f9f9;
    font-size: 1rem;
-   border-radius: 10px;
-   box-shadow: inset 3px 3px 3px #f7f7f7, 
-   inset -3px -3px 3px #f7f7f7;
+   /* border-radius: 10px; */
+   /* box-shadow: inset 3px 3px 3px #f7f7f7, 
+   inset -3px -3px 3px #f7f7f7; */
+   border-bottom: 2px solid gray;
    padding: 5px 10px;
    margin: .5rem;
 }
 
-
-
-
-/* CSS ADD/REMOVE */
-/* .blur {
-   z-index: 0;
-} */
