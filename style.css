@@ -15,7 +15,6 @@ font-family: 'Open Sans', sans-serif; */
 body {
    height: 100vh;
    background: rgb(255,255,255);
-   /* background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(51,51,51,1) 100%); */
 }
 
 /* HEADER */
@@ -72,8 +71,14 @@ tr:nth-child(even) {
 .add-book {
 width: 90%;
 margin: 0 auto;
-/* background: #fff; */
 text-align: center;
+/* background:yellow; */
+}
+
+.add-book fieldset {
+   width: auto;
+   margin: 0 auto;
+   padding: 0 1rem;
 }
 
 .add-book h3 {
