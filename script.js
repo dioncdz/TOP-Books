@@ -1,8 +1,5 @@
 // TODO: UPDATE UI
-// TODO: MAKE READ STATUS A CHECKBOX
 // TODO: APPLY LOCAL STORAGE
-// TODO: DELETE ALL FORM VALUES ---addBookToLibrary()
-// TODO: CANCEL / DELETE INPUT VALUES  ---addBookToLibrary()
 
 /**************************************
  * // ELEMENTS
@@ -30,12 +27,19 @@ Book.prototype.info = function () {
  **************************************/
 function addBookToLibrary () {
    if(this.id === 'submit') {
+      
       // GET BOOK INFO FROM USER
       let title = document.querySelector('#title').value;
       let author = document.querySelector('#author').value;
       let numPages = document.querySelector('#numPages').value;
       let isRead = document.querySelector('#isRead').checked;
    
+      // RETURN IF NO TITLE OR AUTHOR
+      if (title === '' || author === '') {
+         alert('Please indicate Book title and Author')
+         return;
+      }
+
       // STORE DETAILS IN NEW BOOK OBJECT
       const newBook = new Book(title, author, numPages, isRead)
    
@@ -45,32 +49,6 @@ function addBookToLibrary () {
       // TODO: DELETE ALL FORM VALUES
    
       // TODO: UPDATE UI
-      // const libraryTable = document.querySelector('#library-data');
-      // const createRow = document.createElement('tr');
-
-      // const dataTitle = document.createElement('td');
-      // dataTitle.innerHTML = `${title}`;
-
-      // const dataAuthor = document.createElement('td');
-      // dataAuthor.innerHTML = `${author}`;
-
-      // const dataNumPages = document.createElement('td')
-      // dataNumPages.innerHTML = `${numPages}`;
-
-      // const dataIsRead = document.createElement('td')
-      // dataIsRead.innerHTML = `${isRead}`;
-
-      // const dataRemove = document.createElement('td')
-      // dataRemove.innerHTML = `<button class="delete-btn"><i class="far fa-trash-alt"></i></button>`;
-      
-      // libraryTable.appendChild(createRow);
-      // const tableRow = document.querySelector('#library-data tr:last-child')
-      // tableRow.appendChild(dataTitle)
-      // tableRow.appendChild(dataAuthor)
-      // tableRow.appendChild(dataNumPages)
-      // tableRow.appendChild(dataIsRead)
-      // tableRow.appendChild(dataRemove)
-
       displayBooks(myLibrary)
 
       const deleteButtons = document.querySelectorAll('.delete-btn')
@@ -79,18 +57,24 @@ function addBookToLibrary () {
          btn.addEventListener('click', deleteBook);
       })
 
+      clearInput();
    } 
    
    else {
-      // TODO: CANCEL / DELETE INPUT VALUES
-      console.dir(this);
+      //CANCEL / DELETE INPUT VALUES
+      clearInput();
    }
 
 }
 
 function deleteBook() {
+   // Delete row from DOM
    let row = this.parentNode.parentNode;
-   row.parentNode.removeChild(row)
+   row.parentNode.removeChild(row);
+
+   // Delete from myLibrary array
+   let bookIndex = this.parentNode.parentNode.rowIndex - 1;
+   myLibrary.splice(bookIndex, 1)
 }
 
 function displayBooks (books) {
@@ -99,11 +83,19 @@ function displayBooks (books) {
    let dataHTML = '';
 
    for(let book of books) {
+      let bool = Boolean(book.isRead)
+      let checkBox;
+      if(bool) {
+         checkBox = `<input type="checkbox" id="isRead" checked/>`;
+      } else {
+         checkBox = `<input type="checkbox" id="isRead" />`
+      }
+
       dataHTML += `<tr>
       <td>${book.title}</td>
       <td>${book.author}</td>
       <td>${book.numPages}</td>
-      <td>${book.isRead}</td>
+      <td>${checkBox}</td>
       <td><button class="delete-btn"><i class="far fa-trash-alt"></i></button></td>`
    }
 
@@ -111,25 +103,32 @@ function displayBooks (books) {
 
 }
 
-function sortColumn(category) {
-   const dataType = typeof myLibrary[0][category];
-
-   sortDirection = !sortDirection;
-
-   switch(dataType) {
-      case 'number':
-      sortNumberColumn(sortDirection, category)
-      break;
-   };
-
-   displayBooks(myLibrary);
+function clearInput() {
+   Array.from(inputs)[0].value = '';
+   Array.from(inputs)[1].value = '';
+   Array.from(inputs)[2].value = '';
+   Array.from(inputs)[3].checked = false;
 }
 
-function sortNumberColumn(sort, columnName) {
-   myLibrary = myLibrary.sort((a,b) => {
-      return sort ? a[columnName] - b[columnName] : b[columnName] - a[columnName] ;
-   });
-}
+// function sortColumn(category) {
+//    const dataType = typeof myLibrary[0][category];
+
+//    sortDirection = !sortDirection;
+
+//    switch(dataType) {
+//       case 'number':
+//       sortNumberColumn(sortDirection, category)
+//       break;
+//    };
+
+//    displayBooks(myLibrary);
+// }
+
+// function sortNumberColumn(sort, columnName) {
+//    myLibrary = myLibrary.sort((a,b) => {
+//       return sort ? a[columnName] - b[columnName] : b[columnName] - a[columnName] ;
+//    });
+// }
 
 // sortColumn('numPages')
 
