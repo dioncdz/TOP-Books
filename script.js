@@ -7,7 +7,7 @@
 const inputs = document.querySelectorAll('input');
 const addBookButtons = document.querySelectorAll('.add-book-btn');
 
-let myLibrary = [];
+let myLibrary = JSON.parse(localStorage.getItem('items')) || [];
 let sortDirection = false;
 
 // BOOK CONSTRUCTOR
@@ -27,7 +27,6 @@ Book.prototype.info = function () {
  **************************************/
 function addBookToLibrary (e) {
    e.preventDefault();
-   console.log('Hello');
    // Prevents the page from refreshing after submitting form
 
    if(this.id === 'submit') {
@@ -49,6 +48,7 @@ function addBookToLibrary (e) {
    
       // ADD THE LATEST BOOK IN LIBRARY 
       myLibrary.push(newBook);
+      localStorage.setItem('items', JSON.stringify(myLibrary));
    
       // TODO: UPDATE UI
       displayBooks(myLibrary)
@@ -78,6 +78,7 @@ function deleteBook() {
    // Delete from myLibrary array
    let bookIndex = this.parentNode.parentNode.rowIndex - 1;
    myLibrary.splice(bookIndex, 1)
+   localStorage.setItem('items', JSON.stringify(myLibrary));
 }
 
 function displayBooks (books) {
@@ -87,23 +88,16 @@ function displayBooks (books) {
 
    for(let book of books) {
       let bool = Boolean(book.isRead)
-      let checkBox;
-      if(bool) {
-         checkBox = `<input type="checkbox" id="isRead" checked/>`;
-      } else {
-         checkBox = `<input type="checkbox" id="isRead" />`
-      }
 
       dataHTML += `<tr>
       <td>${book.title}</td>
       <td>${book.author}</td>
       <td>${book.numPages}</td>
-      <td>${checkBox}</td>
+      <td><input type="checkbox" id="isRead" ${bool ? 'checked' : ''} /></td>
       <td><button class="delete-btn"><i class="far fa-trash-alt"></i></button></td>`
    }
 
    libraryTable.innerHTML = dataHTML;
-
 }
 
 function clearInput() {
@@ -134,6 +128,8 @@ function clearInput() {
 // }
 
 // sortColumn('numPages')
+
+displayBooks(myLibrary);
 
 /**************************************
  * // EVENT LISTENERS
