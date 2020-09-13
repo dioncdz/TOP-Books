@@ -25,7 +25,11 @@ Book.prototype.info = function () {
 /**************************************
  * // FUNCTIONS
  **************************************/
-function addBookToLibrary () {
+function addBookToLibrary (e) {
+   e.preventDefault();
+   console.log('Hello');
+   // Prevents the page from refreshing after submitting form
+
    if(this.id === 'submit') {
       
       // GET BOOK INFO FROM USER
@@ -34,19 +38,17 @@ function addBookToLibrary () {
       let numPages = document.querySelector('#numPages').value;
       let isRead = document.querySelector('#isRead').checked;
    
-      // RETURN IF NO TITLE OR AUTHOR
-      if (title === '' || author === '') {
-         alert('Please indicate Book title and Author')
-         return;
-      }
+      // TODO: RETURN IF NO TITLE OR AUTHOR --- UNCOMMENT ONCE PROJECT FINISHED
+      // if (title === '' || author === '') {
+      //    alert('Please indicate Book title and Author')
+      //    return;
+      // }
 
       // STORE DETAILS IN NEW BOOK OBJECT
       const newBook = new Book(title, author, numPages, isRead)
    
       // ADD THE LATEST BOOK IN LIBRARY 
       myLibrary.push(newBook);
-   
-      // TODO: DELETE ALL FORM VALUES
    
       // TODO: UPDATE UI
       displayBooks(myLibrary)
@@ -57,6 +59,7 @@ function addBookToLibrary () {
          btn.addEventListener('click', deleteBook);
       })
 
+      // DELETE ALL FORM VALUES
       clearInput();
    } 
    
@@ -138,6 +141,10 @@ function clearInput() {
 addBookButtons.forEach(btn => {
    btn.addEventListener('click', addBookToLibrary);
 })
+
+
+
+
 
 
 

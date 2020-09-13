@@ -68,39 +68,32 @@ tr:nth-child(even) {
 
 /* ADD BOOK */
 
-.add-book {
+.add-books {
 width: 90%;
 margin: 0 auto;
 text-align: center;
 /* background:yellow; */
 }
 
-.add-book fieldset {
+.add-books fieldset {
    width: auto;
    margin: 0 auto;
    padding: 0 1rem;
 }
 
-.add-book h3 {
-   margin-right: 5px;
-}
-
-.add-book div {
+.add-books div {
    width: 100%;
    display: flex;
    align-items: center;
    flex-wrap: wrap;
 }
 
-.add-book div input[type=text],
-.add-book div input[type=number] {
+.add-book input[type=text],
+.add-book input[type=number] {
    border: none;
    outline: none;
    background: #f9f9f9;
    font-size: 1rem;
-   /* border-radius: 10px; */
-   /* box-shadow: inset 3px 3px 3px #f7f7f7, 
-   inset -3px -3px 3px #f7f7f7; */
    border-bottom: 2px solid gray;
    padding: 5px 10px;
    margin: .5rem;

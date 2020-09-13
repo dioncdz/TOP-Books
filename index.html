@@ -17,17 +17,19 @@
     <header>
       <h1>My<span>Book</span>List</h1>
     </header>
-    <section class="add-book">
+    <section class="add-books">
       <div class="input-container">
         <!-- <h3>Add<span>Book</span></h3> -->
         <fieldset>
           <legend>Add Book</legend>
-          <input type="text" id="title" placeholder="title" />
-          <input type="text" id="author" placeholder="author" />
-          <input type="number" id="numPages" placeholder="pages" />
-          <input type="checkbox" id="isRead" />
-          <button class="add-book-btn" id="submit">Add</button>
-          <button class="add-book-btn" id="cancel">Cancel</button>
+          <form class="add-book">
+            <input type="text" id="title" placeholder="title" />
+            <input type="text" id="author" placeholder="author" />
+            <input type="number" id="numPages" placeholder="pages" />
+            <input type="checkbox" id="isRead" />
+            <input type="submit" class="add-book-btn" id="submit" value="Add" />
+            <button class="add-book-btn" id="cancel">Cancel</button>
+          </form>
         </fieldset>
       </div>
     </section>
