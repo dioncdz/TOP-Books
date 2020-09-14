@@ -181,6 +181,24 @@ text-align: center;
    text-decoration: line-through;
 }
 */
+
+.add-book-btn {
+   background-image: linear-gradient(to bottom, #555, #212529);
+   color: #fff;
+   padding: 5px 10px;
+   cursor: pointer;
+   border-radius: 40px;
+   margin-left: .5rem;
+   border: 2px solid #f7f7f7;
+   transition: .3s;
+}
+
+.add-book-btn:focus { outline: none; }
+.add-book-btn:active { transform: translateY(2px); }
+.add-book-btn:hover {
+   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+}
+
 .delete-btn {
 	box-shadow:inset 0px 1px 0px 0px #cf866c;
 	background-color:#d0451b;
